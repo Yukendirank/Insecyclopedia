@@ -7,16 +7,40 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .navbar-links a:hover {
+            color: #3498db;
+        }
+        .main-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .header {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 1rem;
         }
         .category-grid {
             display: grid;
@@ -39,25 +63,47 @@
             object-fit: cover;
             border-radius: 8px;
         }
+        .image-placeholder {
+            background-color: #e0e0e0;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .scientific-details {
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>InsecyClopedia 🐞</h1>
-        <p>Your Comprehensive Insect Encyclopedia</p>
-    </div>
+    <nav class="navbar">
+        <a href="#" class="navbar-logo">InsecyClopedia 🐞</a>
+        <div class="navbar-links">
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-    <div id="categoryContainer" class="category-grid">
-        <!-- Categories will be dynamically added here -->
+    <div class="main-content">
+        <div id="categoryContainer" class="category-grid">
+            <!-- Categories will be dynamically added here -->
+        </div>
     </div>
 
     <script>
-        // Insect Categories Data with Detailed Information
+        // Insect Categories Data (same as previous example)
         const insectCategories = [
             {
                 name: "Beetles",
                 description: "Largest order of insects with over 400,000 known species.",
-                imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Lamprima_adolphinae_MHNT_CUT_2010_44_Bogor_%28Java%29.jpg",
+                imageUrl: "https://i.pinimg.com/control2/736x/43/b9/58/43b958a94f1da34d9f984746a6c7ba3d.jpg",
                 details: {
                     scientificName: "Coleoptera",
                     habitat: "Worldwide in various ecosystems",
@@ -68,7 +114,7 @@
             {
                 name: "Butterflies",
                 description: "Colorful flying insects known for their beautiful wing patterns.",
-                imageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/07/Morpho_peleides_-_Weltvogelpark_Walsrode_2013-03.jpg",
+                imageUrl: "https://i.pinimg.com/control2/736x/cf/53/32/cf533251040d268deeb8a27cf30f44e9.jpg",
                 details: {
                     scientificName: "Lepidoptera",
                     habitat: "Tropical and temperate regions",
@@ -79,7 +125,7 @@
             {
                 name: "Ants",
                 description: "Social insects living in complex colony structures.",
-                imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7f/Camponotus_vagus_Queen_01.jpg",
+                imageUrl: "https://i.pinimg.com/control2/736x/b7/d8/a3/b7d8a310f44a170ce002bd4823756f45.jpg",
                 details: {
                     scientificName: "Formicidae",
                     habitat: "Almost every landmass on Earth",
@@ -90,14 +136,25 @@
             {
                 name: "Dragonflies",
                 description: "Ancient predatory insects with impressive flying abilities.",
-                imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1d/Dragonfly_in_flight.jpg",
+                imageUrl: "https://i.pinimg.com/control2/736x/52/5e/26/525e268bd251badbaedaf66edff00f80.jpg",
                 details: {
                     scientificName: "Odonata",
                     habitat: "Near water bodies",
                     diet: "Small insects",
                     lifespan: "Few weeks to months"
                 }
-            }
+            },
+            {
+                name: "Bees",
+                description: "Pollinators with intricate communication, thriving in organized hives.",
+                imageUrl: "https://i.pinimg.com/control2/736x/75/57/f1/7557f1746ada9af77e108bbe9ae53ac7.jpg",
+                details: {
+                    scientificName: "Apis mellifera",
+                    habitat: "Gardens, woodlands and agricultural fields.",
+                    diet: "Nectar and pollen.",
+                    lifespan: "5-7 weeks for workers, up to 5 years for queens."
+                }
+            },
         ];
 
         // Function to render categories
@@ -113,7 +170,7 @@
                     <h2>${category.name}</h2>
                     <p>${category.description}</p>
                     <h3>Scientific Details:</h3>
-                    <ul>
+                    <ul class="scientific-details">
                         <li><strong>Scientific Name:</strong> ${category.details.scientificName}</li>
                         <li><strong>Habitat:</strong> ${category.details.habitat}</li>
                         <li><strong>Diet:</strong> ${category.details.diet}</li>
