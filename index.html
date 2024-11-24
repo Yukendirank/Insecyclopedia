@@ -53,6 +53,7 @@
             padding: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
         .category-card:hover {
             transform: scale(1.05);
@@ -86,8 +87,8 @@
         <div class="navbar-links">
             <a href="#home">Home</a>
             <a href="#categories">Categories</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
         </div>
     </nav>
 
@@ -98,7 +99,7 @@
     </div>
 
     <script>
-        // Insect Categories Data (same as previous example)
+        // Insect Categories Data
         const insectCategories = [
             {
                 name: "Beetles",
@@ -178,6 +179,11 @@
                     </ul>
                 `;
                 
+                // Add click event to redirect to the beetle.html page
+                categoryCard.addEventListener('click', () => {
+                    window.location.href = 'beetles.html';
+                });
+
                 container.appendChild(categoryCard);
             });
         }
